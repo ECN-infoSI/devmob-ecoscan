@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_scanner"
+        android:icon="@drawable/label_triman"
+        android:title="@string/scanner" />
+
+    <item
+        android:id="@+id/action_explorer"
+        android:icon="@drawable/label_france"
+        android:title="@string/explorer" />
+
+</menu>

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">EcoScan</string>
+    <string name="scanner">Scanner</string>
+    <string name="explorer">Explorer</string>
+    <string name="france_logo">Origine en France\n</string>
+    <string name="product_lait">Lait</string>
+    <string name="triman_logo">Triman</string>
+    <string name="favorite_icon">Favorite\n</string>
 </resources>
