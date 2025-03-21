@@ -88,8 +88,8 @@
                     android:id="@+id/ivFavorite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/heart"
-                    android:contentDescription="@string/favorite_icon" />
+                    android:contentDescription="@string/favorite_icon"
+                    android:src="@drawable/heart" />
             </LinearLayout>
 
             <!-- Note ou évaluation (ex. 5/10) -->
