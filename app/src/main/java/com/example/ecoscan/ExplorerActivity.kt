@@ -30,13 +30,13 @@ class ExplorerActivity : AppCompatActivity() {
             }
         })
 
-        // Configurar RecyclerViews
-        //findViewById<RecyclerView>(R.id.recyclerViewRecent).adapter = ProductAdapter(getRecentProducts())
-        //findViewById<RecyclerView>(R.id.recyclerViewSuggested).adapter = ProductAdapter(getSuggestedProducts())
-        //findViewById<RecyclerView>(R.id.recyclerViewLabels).adapter = LabelAdapter(getLabels())
+        //Configurar RecyclerViews
+        findViewById<RecyclerView>(R.id.recyclerViewRecent).adapter = ProductAdapter(getRecentProducts())
+        findViewById<RecyclerView>(R.id.recyclerViewSuggested).adapter = ProductAdapter(getSuggestedProducts())
+        findViewById<RecyclerView>(R.id.recyclerViewLabels).adapter = LabelAdapter(getLabels())
 
         // Configurar botão scanner
-        findViewById<Button>(R.id.btnScanner).setOnClickListener {
+        findViewById<Button>(R.id.fab_scanner).setOnClickListener {
             Toast.makeText(this, "Scanner ouvert!", Toast.LENGTH_SHORT).show()
         }
 
@@ -55,5 +55,29 @@ class ExplorerActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun getRecentProducts(): List<Product> {
+        return listOf(
+            Product("Lait Amande Intense", R.drawable.produit_lait),
+            Product("Pain de mie céréales", R.drawable.produit_pain),
+            Product("Yaourt", R.drawable.produit_yaourt)
+        )
+    }
+
+    private fun getSuggestedProducts(): List<Product> {
+        return listOf(
+            Product("Lait Amande Intense", R.drawable.produit_lait),
+            Product("Pain de mie céréales", R.drawable.produit_pain),
+            Product("Yaourt", R.drawable.produit_yaourt)
+        )
+    }
+
+    private fun getLabels(): List<Label> {
+        return listOf(
+            Label(R.drawable.label_fsc),
+            Label(R.drawable.label_triman),
+            Label(R.drawable.label_france)
+        )
     }
 }
