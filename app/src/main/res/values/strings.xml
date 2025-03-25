@@ -5,5 +5,8 @@
     <string name="france_logo">Origine en France\n</string>
     <string name="product_lait">Lait</string>
     <string name="triman_logo">Triman</string>
+    <string name="fsc_logo">FSC (Forest Stewardship Council)</string>
     <string name="favorite_icon">Favorite\n</string>
+    <string name="chocolat">Chocolat\n</string>
+
 </resources>
