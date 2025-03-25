@@ -33,7 +33,6 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Content(modifier: Modifier = Modifier) {
-    // Obtém o contexto atual
     val context = LocalContext.current
 
     Column(
@@ -47,7 +46,7 @@ fun Content(modifier: Modifier = Modifier) {
             // Inicia a ProductDetailActivity
             context.startActivity(Intent(context, ProductDetailActivity::class.java))
         }) {
-            Text("Abrir Detalhes do Produto")
+            Text("Montrer les details du produit")
         }
     }
 }
