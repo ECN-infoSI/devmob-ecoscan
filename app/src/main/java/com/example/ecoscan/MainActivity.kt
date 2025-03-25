@@ -43,10 +43,17 @@ fun Content(modifier: Modifier = Modifier) {
         Text(text = "Hello Android!")
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = {
-            // Inicia a ProductDetailActivity
+            // Démarre l'activité ProductDetailActivity
             context.startActivity(Intent(context, ProductDetailActivity::class.java))
         }) {
             Text("Montrer les details du produit")
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+        Button(onClick = {
+            // Démarre l'activité ExplorerActivity
+            context.startActivity(Intent(context, ExplorerActivity::class.java))
+        }) {
+            Text("Montrer la page initial")
         }
     }
 }
