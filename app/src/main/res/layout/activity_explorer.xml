@@ -2,116 +2,243 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:layout_height="match_parent">
 
-    <!-- Toolbar avec titre et l'icone du profil -->
+    <LinearLayout
+        android:id="@+id/PageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <!--Toolbar avec titre et l'icone du profil-->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/teal_200"
+        android:background="@color/soft_teal"
         android:elevation="4dp">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:padding="16dp"
-            android:background="@color/teal_200"
+            android:background="@color/soft_teal"
+            app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             app:title="Explorer"
             app:titleTextColor="@android:color/black"
             app:menu="@menu/menu_toolbar">
-
         </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Barre de recherche ici"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Contenu principal -->
-    <androidx.core.widget.NestedScrollView
+    <TextView
+        android:id="@+id/tvResearchedProducts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/produits_consultes"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/contentLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:fillViewport="true">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerhorizontal="true">
 
         <LinearLayout
+            android:id="@+id/ImageLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="horizontal">
 
-            <!-- SearchView ronde -->
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/searchView"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:queryHint="Rechercher"
-                app:iconifiedByDefault="false"
-                android:background="@drawable/rounded_search_background"
-                android:padding="8dp"/>
-
-            <!-- Section "Produits consultés recentemment" -->
-            <TextView
+            <!-- Image du produit -->
+            <ImageView
+                android:id="@+id/ivProduct"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Produits consultés récemment"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:paddingTop="16dp"/>
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/product_lait"
+                android:src="@drawable/produit_lait" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewRecent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-            <!-- Section "Produits suggérés" -->
-            <TextView
+            <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Produits suggérés"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:paddingTop="16dp"/>
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/product_pain"
+                android:src="@drawable/produit_pain" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewSuggested"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"/>
-
-            <!-- Section "Labels plus consultés" -->
-            <TextView
+            <!-- Image du produit -->
+            <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Labels plus consultés"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:paddingTop="16dp"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewLabels"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/product_yaourt"
+                android:src="@drawable/produit_yaourt" />
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
+    </LinearLayout>
 
-    <!-- Bouton de scanner -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_scanner"
+    <!--Section 2: Produits suggérés-->
+    <!--Espace vertical-->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp" />
+
+    <TextView
+        android:id="@+id/tvSuggestedProducts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/produits_suggeres"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerhorizontal="true">
+
+                <LinearLayout
+                    android:id="@+id/ImageLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Image du produit -->
+                    <ImageView
+                        android:id="@+id/ivProduct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/product_lait"
+                        android:src="@drawable/produit_lait" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/product_pain"
+                        android:src="@drawable/produit_pain" />
+
+                    <!-- Image du produit -->
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/product_yaourt"
+                        android:src="@drawable/produit_yaourt" />
+
+                </LinearLayout>
+
+            </ScrollView>
+        </LinearLayout>
+
+    <!--Section 3: Labels plus consultés-->
+    <!--Espace vertical-->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp" />
+
+        <TextView
+        android:id="@+id/tvLabels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/labels_consultes"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textStyle="bold" />
+
+    <!--Galerie de labels-->
+    <LinearLayout
+        android:id="@+id/labelsContentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/teal_200"
-            android:text="Scanner"
-            android:src="@drawable/ic_scan"
-            app:layout_anchorGravity="center"
-            app:elevation="6dp"/>
+            android:layout_centerhorizontal="true">
+
+            <LinearLayout
+                android:id="@+id/LabelsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Image du label -->
+                <ImageView
+                    android:id="@+id/ivLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/label_fsc"
+                    android:src="@drawable/label_fsc" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/label_france"
+                    android:src="@drawable/label_france" />
+
+                <!-- Image du produit -->
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/label_triman"
+                    android:src="@drawable/label_triman" />
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Bouton de scanner -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/extended_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom|center"
+        android:contentDescription="@string/scanner"
+        android:text="@string/scanner"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/teal_200"
+        app:layout_anchorGravity="center"
+        app:elevation="6dp"
+        app:icon="@drawable/ic_scan"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

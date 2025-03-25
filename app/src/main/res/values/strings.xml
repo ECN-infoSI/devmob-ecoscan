@@ -3,7 +3,15 @@
     <string name="scanner">Scanner</string>
     <string name="explorer">Explorer</string>
     <string name="france_logo">Origine en France\n</string>
+    <string name="produits_suggeres">Produits suggérés</string>
+    <string name="produits_consultes">Produits consultés récemment</string>
+    <string name="labels_consultes">Labels plus consultés</string>
+    <string name="label_fsc">FSC</string>
+    <string name="label_france">Label Origine France</string>
+    <string name="label_triman">Label Tri</string>
     <string name="product_lait">Lait</string>
+    <string name="product_pain">Pain</string>
+    <string name="product_yaourt">Yaourt</string>
     <string name="triman_logo">Triman</string>
     <string name="favorite_icon">Favorite\n</string>
 </resources>
