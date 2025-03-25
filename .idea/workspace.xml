@@ -32,11 +32,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdce92c3-37ec-4ba6-b52b-b4ab67387a23" name="Changes" comment="Details du produit">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/button_scanner_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_search_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_toolbar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ecoscan/ExplorerActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ecoscan/ExplorerActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_explorer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_explorer.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

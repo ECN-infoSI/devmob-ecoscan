@@ -25,7 +25,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Conteúdo principal -->
+    <!-- Contenu principal -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -38,7 +38,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- SearchView arredondada -->
+            <!-- SearchView ronde -->
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
@@ -48,7 +48,7 @@
                 android:background="@drawable/rounded_search_background"
                 android:padding="8dp"/>
 
-            <!-- Seção "Produtos consultados recentemente" -->
+            <!-- Seção "Produits consultés recentemment" -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,25 +104,16 @@
     </androidx.core.widget.NestedScrollView>
 
     <!-- Bottom Navigation com botão de scanner -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/green_light"
-        app:menu="@menu/bottom_menu"
-        app:labelVisibilityMode="labeled"
-        android:layout_gravity="bottom">
-
-        <Button
-            android:id="@+id/btnScanner"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_scanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_scan"
+            android:backgroundTint="@color/teal_200"
             android:text="Scanner"
-            android:textColor="@android:color/white"
-            android:background="@drawable/button_scanner_background"
-            android:textStyle="bold"
-            android:gravity="center"/>
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+            app:layout_anchorGravity="center"
+            app:elevation="6dp"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
