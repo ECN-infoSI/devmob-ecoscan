@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+ Layout principal utilisant un CoordinatorLayout pour gérer la barre d'application (AppBar)
+ et le contenu défilable (NestedScrollView).
+-->
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,40 +10,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Barre d’application (AppBar) avec la Toolbar -->
+    <!-- AppBarLayout contenant la Toolbar en haut -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar">
 
-        <!-- Toolbar avec le titre "Retour" et l’icône de retour -->
+        <!-- Toolbar avec le titre "Retour" et l'icône de retour -->
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorSurface"
-            app:title="Retour"
             app:navigationIcon="@drawable/ic_back"
-        app:titleTextColor="@android:color/black" />
+            app:title="Retour"
+            app:titleTextColor="@android:color/black" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Contenu défilable (Scroll) -->
+    <!-- Zone principale défilable (NestedScrollView) avec paddingBottom pour éviter la superposition avec le BottomNavigationView -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:padding="16dp"
+        android:paddingBottom="100dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!-- Disposition en colonne pour tout le contenu -->
+        <!-- Conteneur vertical pour tout le contenu -->
         <LinearLayout
             android:id="@+id/contentLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Image du produit -->
+            <!-- Image du produit au centre -->
             <ImageView
                 android:id="@+id/ivProduct"
                 android:layout_width="wrap_content"
@@ -49,84 +54,108 @@
                 android:contentDescription="@string/product_lait"
                 android:src="@drawable/produit_lait" />
 
-            <!-- Espace vertical -->
+            <!-- Espace vertical de 16dp -->
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="16dp" />
 
-            <!-- Ligne contenant le nom du produit (à gauche) et l’icône de favori (à droite) -->
+            <!-- LIGNE : Nom du produit, marque à gauche + icônes et note à droite -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
-                <!-- Nom du produit et producteur/marque -->
+                <!-- Colonne à gauche : Nom du produit et producteur/marque -->
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
+                    <!-- Nom du produit (en gras, taille 18sp) -->
                     <TextView
                         android:id="@+id/tvProductName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nom du produit"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                        android:textStyle="bold" />
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black" />
 
+                    <!-- Producteur ou Marque (taille 14sp, couleur grise) -->
                     <TextView
                         android:id="@+id/tvBrand"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Producteur ou Marque"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                        android:textSize="14sp"
                         android:textColor="@android:color/darker_gray" />
                 </LinearLayout>
 
-                <!-- Icône de favori (cœur) -->
-                <ImageView
-                    android:id="@+id/ivFavorite"
-                    android:layout_width="43dp"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/favorite_icon"
-                    android:src="@drawable/heart" />
+                <!-- Rangée d'icônes à droite : cœur, partage, badge, note -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <!-- Icône favori (cœur) avec fond circulaire vert -->
+                    <ImageView
+                        android:id="@+id/ivFavorite"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/heart"
+                        android:contentDescription="@string/favorite_icon"
+                        android:padding="1dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/bg_green_circle"
+                        android:scaleType="centerInside" />
+
+                    <!-- Icône de partage -->
+                    <ImageView
+                        android:id="@+id/ivShare"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/share"
+                        android:contentDescription="@string/share_icon"
+                        android:layout_marginRight="8dp"
+                        android:scaleType="centerInside" />
+
+                    <!-- Icône de badge/médaille -->
+                    <ImageView
+                        android:id="@+id/ivBadge"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/rating"
+                        android:contentDescription="@string/badge_icon"
+                        android:layout_marginRight="4dp"
+                        android:scaleType="centerInside" />
+
+                    <!-- Note (ex. 5/10) -->
+                    <TextView
+                        android:id="@+id/tvRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
             </LinearLayout>
+            <!-- Fin de la ligne Nom + Marque + Icônes -->
 
-            <!-- Note ou évaluation (ex. 5/10) -->
-            <TextView
-                android:id="@+id/tvRating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="5/10"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                android:textColor="@android:color/holo_orange_dark"
-                android:textStyle="bold" />
-
-            <!-- Espace vertical -->
+            <!-- Espace vertical de 16dp -->
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="16dp" />
 
-            <!-- TITRE: Classification -->
-            <TextView
-                android:id="@+id/tvClassificationTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Classification"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:textStyle="bold" />
-
-            <!-- Sous-texte explicatif -->
+            <!-- Sous-texte explicatif (Classification, etc.) -->
             <TextView
                 android:id="@+id/tvClassificationSubtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Brève explication de pourquoi le produit a cette classification"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="4dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
 
-            <!-- Espace vertical -->
+            <!-- Espace vertical de 16dp -->
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="16dp" />
@@ -136,20 +165,18 @@
                 android:id="@+id/tvDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="La description du produit ici. Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
 
-            <!-- Espace vertical -->
+            <!-- Espace vertical de 16dp -->
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="16dp" />
 
-            <!-- TITRE: Certifications -->
+            <!-- Titre: Certifications -->
             <TextView
                 android:id="@+id/tvCertificationsTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Certifications"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:textStyle="bold" />
 
@@ -157,22 +184,18 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/tvLabel"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:textColor="@color/light_gray"
-                    android:textSize="16sp"
-                    android:padding="8dp"
-                    android:src="@drawable/fsc_square"
-                    android:contentDescription="@string/fsc_logo"
                     android:clickable="true"
-                    android:focusable="true" />
-
-
+                    android:focusable="true"
+                    android:contentDescription="@string/fsc_logo"
+                    android:padding="8dp"
+                    android:src="@drawable/fsc_square" />
 
                 <Space
                     android:layout_width="16dp"
@@ -182,21 +205,20 @@
                     android:id="@+id/ivFranceLogo"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/label_france"
-                    android:contentDescription="@string/france_logo" />
+                    android:contentDescription="@string/france_logo"
+                    android:src="@drawable/label_france" />
             </LinearLayout>
 
-            <!-- Espace vertical -->
+            <!-- Espace vertical de 16dp -->
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="16dp" />
 
-            <!-- TITRE: Information nutritionnelle -->
+            <!-- Titre: Information nutritionnelle -->
             <TextView
                 android:id="@+id/tvNutritionalInfoTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Information nutritionnelle"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:textStyle="bold" />
 
@@ -204,19 +226,111 @@
                 android:id="@+id/tvNutritionalInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ingrédients: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris orci est..."
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="4dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
 
-            <!-- Espace final pour un meilleur défilement -->
+            <!-- Espace vertical de 16dp -->
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="32dp" />
+                android:layout_height="16dp" />
 
+            <!-- Image tableau (si nécessaire) -->
+            <ImageView
+                android:id="@+id/ivTableau"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:src="@drawable/tableau" />
+
+            <!-- Espace final -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <!-- Section: Produits similaires -->
+            <TextView
+                android:id="@+id/tvProductsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:text="Produits similaires"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <!-- Conteneur horizontal pour les produits similaires -->
+            <LinearLayout
+                android:id="@+id/produits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <!-- 1er produit : Lait -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginRight="16dp">
+
+                    <ImageView
+                        android:id="@+id/lait"
+                        android:layout_width="100dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/produit_lait"
+                        android:contentDescription="@string/product_lait"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:adjustViewBounds="true"
+                        android:padding="8dp" />
+
+                    <!-- Nom du produit en dessous de l'image -->
+                    <TextView
+                        android:id="@+id/tvNomLait"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lait d’amande"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+                <!-- 2e produit : Chocolat -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/chocolat"
+                        android:layout_width="100dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/chocolat"
+                        android:contentDescription="@string/chocolat"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:adjustViewBounds="true"
+                        android:padding="8dp" />
+
+                    <!-- Nom du produit en dessous de l'image -->
+                    <TextView
+                        android:id="@+id/tvNomChocolat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chocolat noir"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+            </LinearLayout>
+            <!-- Espace vertical -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Menu de navigation en bas (BottomNavigationView) -->
+    <!-- Barre de navigation en bas (BottomNavigationView) -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
