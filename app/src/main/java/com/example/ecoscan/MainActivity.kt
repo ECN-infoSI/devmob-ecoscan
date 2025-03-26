@@ -1,20 +1,14 @@
 package com.example.ecoscan
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.ecoscan.ui.theme.EcoScanTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,31 +27,6 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Content(modifier: Modifier = Modifier) {
-    val context = LocalContext.current
-
-    Column(
-        modifier = modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(text = "Hello Android!")
-        Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = {
-            // Démarre l'activité ProductDetailActivity
-            context.startActivity(Intent(context, ProductDetailActivity::class.java))
-        }) {
-            Text("Montrer les details du produit")
-        }
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Button(onClick = {
-
-            // Démarre l'activité ExplorerActivity
-            context.startActivity(Intent(context, ExplorerActivity::class.java))
-        }) {
-            Text("Montrer la page initial")
-        }
-    }
 }
 
 @Preview(showBackground = true)
