@@ -36,6 +36,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+        <!--Section Produits Recherchés-->
     <TextView
         android:id="@+id/tvResearchedProducts"
         android:layout_width="wrap_content"
@@ -45,25 +46,24 @@
         android:textStyle="bold" />
 
     <LinearLayout
-        android:id="@+id/contentLayout"
+        android:id="@+id/produitsRecherchesLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerhorizontal="true">
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/ImageLayout"
+            android:id="@+id/ImageProduitsRecherchesLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <!-- Image du produit -->
             <ImageView
-                android:id="@+id/ivProduct"
+                android:id="@+id/ivrProductLait"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
@@ -108,15 +108,14 @@
         android:textStyle="bold" />
 
         <LinearLayout
-            android:id="@+id/contentLayout"
+            android:id="@+id/ProduitsSuggeresLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ScrollView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerhorizontal="true">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:id="@+id/ImageLayout"
@@ -126,7 +125,7 @@
 
                     <!-- Image du produit -->
                     <ImageView
-                        android:id="@+id/ivProduct"
+                        android:id="@+id/ivsProductLait"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp"
                         android:layout_gravity="center"
@@ -179,8 +178,7 @@
 
         <ScrollView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerhorizontal="true">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:id="@+id/LabelsLayout"
