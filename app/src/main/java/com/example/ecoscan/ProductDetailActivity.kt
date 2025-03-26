@@ -1,5 +1,6 @@
 package com.example.ecoscan
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -36,6 +37,13 @@ class ProductDetailActivity : AppCompatActivity() {
         // Gestion du clic sur l’icône favori (cœur)
         binding.ivFavorite.setOnClickListener {
             Toast.makeText(this, "Produit ajouté aux favoris", Toast.LENGTH_SHORT).show()
+        }
+
+        // Clique no selo para abrir detalhes do label
+        binding.tvLabel.setOnClickListener {
+            val intent = Intent(this, LabelDetailActivity::class.java)
+            intent.putExtra("LABEL_NAME", binding.tvLabel.contentDescription.toString())
+            startActivity(intent)
         }
 
         // Gestion du BottomNavigationView

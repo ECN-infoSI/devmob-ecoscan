@@ -19,7 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorSurface"
             app:title="Retour"
-            app:navigationIcon="@drawable/ic_launcher_background"
+            app:navigationIcon="@drawable/ic_back"
         app:titleTextColor="@android:color/black" />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -161,11 +161,18 @@
                 android:layout_marginTop="8dp">
 
                 <ImageView
-                    android:id="@+id/ivFscLogo"
+                    android:id="@+id/tvLabel"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/label_triman"
-                    android:contentDescription="@string/triman_logo" />
+                    android:textColor="@color/light_gray"
+                    android:textSize="16sp"
+                    android:padding="8dp"
+                    android:src="@drawable/fsc_square"
+                    android:contentDescription="@string/fsc_logo"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+
 
                 <Space
                     android:layout_width="16dp"

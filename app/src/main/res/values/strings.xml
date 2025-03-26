@@ -13,5 +13,8 @@
     <string name="product_pain">Pain</string>
     <string name="product_yaourt">Yaourt</string>
     <string name="triman_logo">Triman</string>
+    <string name="fsc_logo">FSC (Forest Stewardship Council)</string>
     <string name="favorite_icon">Favorite\n</string>
+    <string name="chocolat">Chocolat\n</string>
+
 </resources>
