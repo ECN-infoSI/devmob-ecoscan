@@ -15,11 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/soft_teal"
-        android:elevation="4dp">
+        android:elevation="4dp"
+        android:padding="16dp">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:background="@color/soft_teal"
             app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             app:title="Explorer"
@@ -27,12 +29,11 @@
             app:menu="@menu/menu_toolbar">
         </androidx.appcompat.widget.Toolbar>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Barre de recherche ici"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-            />
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text = "@string/rechercher"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -43,13 +44,15 @@
         android:layout_height="wrap_content"
         android:text="@string/produits_consultes"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:padding="10dp"/>
 
     <LinearLayout
         android:id="@+id/produitsRecherchesLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <ScrollView
         android:layout_width="wrap_content"
@@ -69,7 +72,9 @@
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/product_lait"
-                android:src="@drawable/produit_lait" />
+                android:src="@drawable/produit_lait_squared"
+                android:clickable="true"
+                android:focusable="true"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -81,7 +86,7 @@
 
             <!-- Image du produit -->
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
@@ -105,13 +110,15 @@
         android:layout_height="wrap_content"
         android:text="@string/produits_suggeres"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:padding="10dp"/>
 
         <LinearLayout
             android:id="@+id/ProduitsSuggeresLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <ScrollView
                 android:layout_width="wrap_content"
@@ -131,7 +138,9 @@
                         android:layout_gravity="center"
                         android:adjustViewBounds="true"
                         android:contentDescription="@string/product_lait"
-                        android:src="@drawable/produit_lait" />
+                        android:src="@drawable/produit_lait_squared"
+                        android:clickable="true"
+                        android:focusable="true"/>
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -143,7 +152,7 @@
 
                     <!-- Image du produit -->
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_gravity="center"
                         android:adjustViewBounds="true"
@@ -167,14 +176,16 @@
         android:layout_height="wrap_content"
         android:text="@string/labels_consultes"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:padding="10dp"/>
 
     <!--Galerie de labels-->
     <LinearLayout
         android:id="@+id/labelsContentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <ScrollView
             android:layout_width="wrap_content"
@@ -188,13 +199,15 @@
 
                 <!-- Image du label -->
                 <ImageView
-                    android:id="@+id/ivLabel"
+                    android:id="@+id/ivLabelFsc"
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/label_fsc"
-                    android:src="@drawable/label_fsc" />
+                    android:src="@drawable/label_fsc_squared"
+                    android:clickable="true"
+                    android:focusable="true"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -211,7 +224,8 @@
                     android:layout_gravity="center"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/label_triman"
-                    android:src="@drawable/label_triman" />
+                    android:src="@drawable/label_triman_squared"
+                    />
 
             </LinearLayout>
 

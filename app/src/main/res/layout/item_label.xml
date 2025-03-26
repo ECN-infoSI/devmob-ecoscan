@@ -9,6 +9,5 @@
         android:id="@+id/labelImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:scaleType="fitCenter"
-        android:background="@drawable/circle_background"/>
+        android:scaleType="fitCenter" />
 </LinearLayout>

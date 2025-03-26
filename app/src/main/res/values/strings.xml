@@ -16,5 +16,6 @@
     <string name="fsc_logo">FSC (Forest Stewardship Council)</string>
     <string name="favorite_icon">Favorite\n</string>
     <string name="chocolat">Chocolat\n</string>
+    <string name="rechercher">Rechercher...</string>
 
 </resources>
