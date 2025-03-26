@@ -26,7 +26,7 @@ class LabelDetailActivity : AppCompatActivity() {
         }
 
         // Remplissage des données du label (ces données pourraient venir d'une API à l'avenir)
-        val labelName = intent.getStringExtra("LABEL_NAME") ?: "Label inconnu"
+        val labelName = "FSC (Forest Stewardship Council)"
         binding.tvLabelName.text = labelName
         binding.tvCategory.text = "Gestion durable des forêts"
         binding.tvRegulatoryBody.text = "   - Certification de la gestion forestière responsable\n" +
