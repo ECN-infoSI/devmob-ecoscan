@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+ Layout principal pour afficher les détails d'un label avec
+ une barre d'action, logo, description, critères et produits associés.
+-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,20 +10,18 @@
     android:layout_height="match_parent"
     tools:context=".LabelDetailActivity">
 
-    <!-- Toolbar com botão de voltar -->
+    <!-- Toolbar avec bouton retour -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/light_gray"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_back"
-        app:titleTextColor="@android:color/black" />
+        app:titleTextColor="@android:color/black"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Imagem do selo ocupando toda a largura e colada na barra superior -->
-
-    <!-- Container para nome do selo e favorito -->
+    <!-- Logo du label (image plein écran en haut) -->
     <ImageView
         android:id="@+id/ivLabelLogo"
         android:layout_width="match_parent"
@@ -27,20 +29,21 @@
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         android:src="@drawable/label_fsc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Nom du label + favori -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Label_fav_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivLabelLogo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivLabelLogo">
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Nom -->
         <TextView
             android:id="@+id/tvLabelName"
             android:layout_width="wrap_content"
@@ -48,138 +51,177 @@
             android:textSize="22sp"
             android:textColor="@android:color/black"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-        <!-- Ícone de favorito ao lado do nome -->
+        <!-- Favori (coeur) avec fond circulaire vert -->
         <ImageView
             android:id="@+id/ivFavorite"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_marginStart="8dp"
-            android:src="@drawable/grey_heart"
-            app:layout_constraintBottom_toBottomOf="@id/tvLabelName"
+            android:background="@drawable/bg_green_circle"
+            android:src="@drawable/heart"
+            android:padding="1dp"
+            android:scaleType="centerInside"
+            android:clickable="true"
+            android:focusable="true"
             app:layout_constraintStart_toEndOf="@id/tvLabelName"
             app:layout_constraintTop_toTopOf="@id/tvLabelName"
-            android:clickable="true"
-            android:focusable="true" />
+            app:layout_constraintBottom_toBottomOf="@id/tvLabelName" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Categoria -->
+    <!-- Catégorie -->
     <TextView
         android:id="@+id/tvCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Label_fav_container" />
+        app:layout_constraintTop_toBottomOf="@id/Label_fav_container"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Organismo de regulamentação -->
+    <!-- Organisme de régulation -->
     <TextView
         android:id="@+id/tvRegulatoryBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvCategory" />
+        app:layout_constraintTop_toBottomOf="@id/tvCategory"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Descrição -->
+    <!-- Titre Description -->
     <TextView
         android:id="@+id/tvDescriptionTitle"
-        android:textColor="@android:color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="18dp"
         android:text="Description"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvRegulatoryBody" />
+        app:layout_constraintTop_toBottomOf="@id/tvRegulatoryBody"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Contenu Description -->
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDescriptionTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDescriptionTitle" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Critérios de obtenção -->
+    <!-- Titre Critères -->
     <TextView
         android:id="@+id/tvCriteriaTitle"
-        android:textColor="@android:color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
         android:text="Critères d’obtention"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+        app:layout_constraintTop_toBottomOf="@id/tvDescription"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Contenu Critères -->
     <TextView
         android:id="@+id/tvCriteria"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCriteriaTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvCriteriaTitle" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Produtos com este selo -->
+    <!-- Titre Produits avec ce label -->
     <TextView
         android:id="@+id/tvProductsTitle"
-        android:textColor="@android:color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
         android:text="Produits avec ce label"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvCriteria" />
+        app:layout_constraintTop_toBottomOf="@id/tvCriteria"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Logos de certifications -->
+    <!-- Liste horizontale des produits avec leur nom -->
     <LinearLayout
         android:id="@+id/produits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvProductsTitle" >
+        app:layout_constraintTop_toBottomOf="@id/tvProductsTitle"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:id="@+id/lait"
-            android:layout_width="100dp"
-            android:layout_height="70dp"
-            android:textColor="@color/light_gray"
-            android:textSize="16sp"
-            android:padding="8dp"
-            android:src="@drawable/produit_lait"
-            android:contentDescription="@string/product_lait"
-            android:clickable="true"
-            android:focusable="true" />
+        <!-- Produit 1 : Lait -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginEnd="16dp">
 
-        <Space
-            android:layout_width="16dp"
-            android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/lait"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:padding="8dp"
+                android:src="@drawable/produit_lait"
+                android:contentDescription="@string/product_lait"
+                android:clickable="true"
+                android:focusable="true" />
 
-        <ImageView
-            android:id="@+id/chocolat"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/chocolat"
-            android:contentDescription="@string/chocolat" />
+            <TextView
+                android:id="@+id/tvNomLait"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lait bio"
+                android:textColor="@color/light_gray"
+                android:textSize="16sp"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Produit 2 : Chocolat -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/chocolat"
+                android:layout_width="64dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:padding="8dp"
+                android:src="@drawable/chocolat"
+                android:contentDescription="@string/chocolat"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/tvNomChocolat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chocolat"
+                android:textColor="@color/light_gray"
+                android:textSize="16sp"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
     </LinearLayout>
 
-    <!-- Menu de navegação fixo na parte inferior -->
+    <!-- Menu de navigation en bas -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu_bottom_nav" />
+        app:menu="@menu/menu_bottom_nav"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
