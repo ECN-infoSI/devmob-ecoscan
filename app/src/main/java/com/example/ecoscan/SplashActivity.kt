@@ -9,11 +9,12 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import com.example.ecoscan.ui.theme.EcoScanTheme
+import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
+import com.example.ecoscan.ui.theme.EcoScanTheme
 
 class SplashActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,17 +40,26 @@ class SplashActivity : ComponentActivity() {
 
 @Composable
 fun SplashScreen(onTimeout: () -> Unit) {
+    // Lance un effet dès que le composant est affiché
     LaunchedEffect(true) {
+        // Attend 3 secondes (3000 millisecondes)
         delay(1500)
+        // Appelle la fonction passée en paramètre (pour naviguer vers MainActivity)
         onTimeout()
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.welcome),
-            contentDescription = "Logo ÉcoScan",
-            modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop
-        )
+    // Mise en page de l'écran de bienvenue
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        // Colonne centrée verticalement et horizontalement
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            // Affiche l’image d’accueil (le logo)
+            Image(
+                painter = painterResource(id = R.drawable.welcome), // Nom du fichier image dans drawable
+                contentDescription = "Logo ÉcoScan",
+            )
+        }
     }
 }

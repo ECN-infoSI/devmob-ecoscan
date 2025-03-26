@@ -49,7 +49,9 @@ fun Content(modifier: Modifier = Modifier) {
             Text("Montrer les details du produit")
         }
         Spacer(modifier = Modifier.height(16.dp))
+
         Button(onClick = {
+
             // Démarre l'activité ExplorerActivity
             context.startActivity(Intent(context, ExplorerActivity::class.java))
         }) {

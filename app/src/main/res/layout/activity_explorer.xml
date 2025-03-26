@@ -2,118 +2,354 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:layout_height="match_parent">
 
-    <!-- Toolbar avec titre et l'icone du profil -->
+    <LinearLayout
+        android:id="@+id/PageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <!--Toolbar avec titre et l'icone du profil-->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/teal_200"
-        android:elevation="4dp">
+        android:background="@color/soft_teal"
+        android:elevation="4dp"
+        android:padding="16dp">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:padding="16dp"
-            android:background="@color/teal_200"
+            android:layout_height="wrap_content"
+            android:background="@color/soft_teal"
+            app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             app:title="Explorer"
             app:titleTextColor="@android:color/black"
-            app:menu="@menu/menu_toolbar">
-
+            app:menu="@menu/menu_toolbar"
+            android:layout_marginBottom="10dp">
         </androidx.appcompat.widget.Toolbar>
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_search_background"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Contenu principal -->
-    <androidx.core.widget.NestedScrollView
+        <!--Section Produits Recherchés-->
+    <TextView
+        android:id="@+id/tvResearchedProducts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/produits_consultes"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textStyle="bold"
+        android:padding="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/produitsRecherchesLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:fillViewport="true">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/ImageProduitsRecherchesLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Lait avec description-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivrProductLait"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/product_lait"
+                    android:src="@drawable/produit_lait_squared"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <TextView
+                    android:id="@+id/productDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:text="@string/product_lait"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/product_pain"
+                android:src="@drawable/produit_pain" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:text="@string/product_pain"
+                android:textSize="14sp"
+                android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <!-- Produit yaourt -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/product_yaourt"
+                android:src="@drawable/produit_yaourt" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:text="@string/product_yaourt"
+                android:textSize="14sp"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+    </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!--Section 2: Produits suggérés-->
+    <!--Espace vertical-->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp" />
+
+    <TextView
+        android:id="@+id/tvSuggestedProducts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/produits_suggeres"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textStyle="bold"
+        android:padding="10dp"/>
 
         <LinearLayout
+            android:id="@+id/ProduitsSuggeresLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="10dp">
 
-            <!-- SearchView ronde -->
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/searchView"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:queryHint="Rechercher"
-                app:iconifiedByDefault="false"
-                android:background="@drawable/rounded_search_background"
-                android:padding="8dp"/>
-
-            <!-- Seção "Produits consultés recentemment" -->
-            <TextView
+            <HorizontalScrollView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Produits consultés récemment"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:paddingTop="16dp"/>
+                android:layout_height="wrap_content">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewRecent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layoutManager_orientation="horizontal"/>
+                <LinearLayout
+                    android:id="@+id/ImageLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <!-- Seção "Produtos sugeridos" -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Produits suggérés"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:paddingTop="16dp"/>
+                    <!-- Lait avec description-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewSuggested"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"/>
+                        <ImageView
+                            android:id="@+id/ivsProductLait"
+                            android:layout_width="wrap_content"
+                            android:layout_height="150dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/product_lait"
+                            android:src="@drawable/produit_lait_squared"
+                            android:clickable="true"
+                            android:focusable="true"/>
 
-            <!-- Seção "Labels mais consultados" -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Labels plus consultés"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:paddingTop="16dp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:text="@string/product_lait"
+                            android:textSize="14sp"
+                            android:textColor="@android:color/black" />
+                    </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewLabels"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layoutManager_orientation="horizontal"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="150dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/product_pain"
+                            android:src="@drawable/produit_pain" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:text="@string/product_pain"
+                            android:textSize="14sp"
+                            android:textColor="@android:color/black" />
+                    </LinearLayout>
+
+                    <!-- Produit yaourt -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:contentDescription="@string/product_yaourt"
+                            android:src="@drawable/produit_yaourt" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:text="@string/product_yaourt"
+                            android:textSize="14sp"
+                            android:textColor="@android:color/black" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </HorizontalScrollView>
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    <!--Section 3: Labels plus consultés-->
+    <!--Espace vertical-->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp" />
 
-    <!-- Bottom Navigation com botão de scanner -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_scanner"
+        <TextView
+        android:id="@+id/tvLabels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/labels_consultes"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textStyle="bold"
+        android:padding="10dp"/>
+
+    <!--Galerie de labels-->
+    <LinearLayout
+        android:id="@+id/labelsContentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <HorizontalScrollView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/ic_scan"
-            android:backgroundTint="@color/teal_200"
-            android:text="Scanner"
-            app:layout_anchorGravity="center"
-            app:elevation="6dp"/>
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/LabelsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivLabelFsc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/label_fsc"
+                    android:src="@drawable/label_fsc_squared"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/label_france"
+                    android:src="@drawable/label_france" />
+
+                <!-- Image du produit -->
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/label_triman"
+                    android:src="@drawable/label_triman_squared"
+                    />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+    </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Bouton de scanner -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/extended_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom|center"
+        android:contentDescription="@string/scanner"
+        android:text="@string/scanner"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/teal_200"
+        app:layout_anchorGravity="center"
+        app:elevation="6dp"
+        app:icon="@drawable/ic_scan"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
