@@ -74,10 +74,14 @@ class ProductDetailActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.action_scanner -> {
                     Toast.makeText(this, "Clique sur Scanner", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.action_explorer -> {
                     Toast.makeText(this, "Clique sur Explorer", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, ExplorerActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 else -> false

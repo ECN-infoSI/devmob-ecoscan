@@ -51,6 +51,8 @@ class ExplorerActivity : AppCompatActivity() {
         //Gestion du Bouton de Scanner
         binding.extendedFab.setOnClickListener {
             Toast.makeText(this, "Scan ouvert", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
 
